@@ -13,7 +13,7 @@ A repository to explore and implement various CPU scheduling algorithms, focusin
 2. **Shortest Job Next (SJN)**  
    - Prioritizes processes with the shortest execution time.  
    - Minimizes average waiting time but may cause starvation for longer processes.
-
+ 
 3. **Round Robin (RR)**  
    - Each process gets a fixed time slice (quantum).  
    - Ensures fairness and is widely used in time-sharing systems.
