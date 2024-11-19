@@ -289,7 +289,7 @@ int main()
         }
         cout << "Want to add Process(y/n) : ";
         cin >> ch;
-        if (ch == 'y' || ch == 'Y')
+        if (ch == 'y' || ch == 'Y')//adds one more process for the user
             check = false;
         else if (ch == 'n' || ch == 'N')
             check = true;
