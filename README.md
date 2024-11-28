@@ -1,7 +1,7 @@
 
 # CPU Scheduler Algorithm
 
-A repository to explore and implement various CPU scheduling algorithms, focusing on understanding their functionality, efficiency, and trade-offs.
+Explore and implement various CPU scheduling algorithms, focusing on understanding their functionality, efficiency, and trade-offs.
 
 ## **Implemented Algorithms**
 
