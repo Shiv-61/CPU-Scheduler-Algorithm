@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <unistd.h>
 using namespace std;
+using namespace std::chrono;
 
 // Structure to represent a process
 struct Process
@@ -240,6 +241,7 @@ void priorityNonPreemptiveScheduler(std::vector<Process> processes)
 
 int main()
 {
+    auto start = high_resolution_clock::now();
     char ch;
     bool check = false;
     while (!check)
@@ -299,5 +301,10 @@ int main()
             break;
         }
     }
+     auto stop = high_resolution_clock::now();
+     auto time = duration_cast<microseconds>(stop - start);
+     double ms = duration.count() / 1000.0;
+    cout << fixed << setprecision(4);
+    cout << "Time taken by whole program: " << ms << " ms" << endl;
     return 0;
 }
