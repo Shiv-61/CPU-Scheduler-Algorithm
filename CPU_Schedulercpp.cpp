@@ -75,6 +75,51 @@ void sjfScheduler(std::vector<Process> processes)
 
 // Function to simulate Shortest Remaining Job First (SRJF) CPU scheduling
 
+void srjfScheduler(std::vector<Process> processes)
+{
+    std::cout << "\nSRJF CPU Scheduling\n";
+
+    int currentTime = 0, completed = 0;
+    int totalWaitTime = 0, totalTurnaroundTime = 0;
+
+    while (completed < processes.size())
+    {
+
+        auto it = std::min_element(processes.begin(), processes.end(),
+                                   [&](const Process &a, const Process &b)
+                                   {
+                                       return (a.remainingTime > 0 && (b.remainingTime == 0 || a.remainingTime < b.remainingTime));
+                                   });
+
+        if (it == processes.end() || it->remainingTime == 0)
+        {
+            currentTime++;
+            continue;
+        }
+
+        it->remainingTime--;
+        currentTime++;
+
+        if (it->remainingTime == 0)
+        {
+            completed++;
+            int turnaroundTime = currentTime;
+            int waitTime = turnaroundTime - it->burstTime;
+
+            totalWaitTime += waitTime;
+            totalTurnaroundTime += turnaroundTime;
+
+            std::cout << "Process " << it->id
+                      << ": Wait time = " << waitTime
+                      << ", Turnaround time = " << turnaroundTime << "\n";
+        }
+    }
+
+    std::cout << "\nAverage Wait Time: " << (float)totalWaitTime / processes.size() << "\n";
+    std::cout << "Average Turnaround Time: " << (float)totalTurnaroundTime / processes.size() << "\n";
+}
+
+
 // Function to simulate Round Robin CPU scheduling
 void roundRobinScheduler(std::vector<Process> processes, int timeQuantum)
 {
